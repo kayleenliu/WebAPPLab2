@@ -45,10 +45,15 @@ public class AgeCalculatorServlet extends HttpServlet {
             
             try{
                 int age = Integer.parseInt(ageString);
+                if(age>0 && age<123){
                 int ageNextBirthday = age+1;
-            request.setAttribute("message", "Your age next birthday will be "+ ageNextBirthday);
+                request.setAttribute("message", "Your age next birthday will be "+ ageNextBirthday);
+                }
+                else {
+                    throw new Exception();
+                }
             }catch (Exception ex){
-                request.setAttribute("message", "You must enter a number. ");
+                request.setAttribute("message", "You must enter a valid integer between 1-122. ");
             }
         }else {
             request.setAttribute("message", "You must give your current age.");
@@ -56,6 +61,7 @@ public class AgeCalculatorServlet extends HttpServlet {
         
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
     }
+
 
   
 
