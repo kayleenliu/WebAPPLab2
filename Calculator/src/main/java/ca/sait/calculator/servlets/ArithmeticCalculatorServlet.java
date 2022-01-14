@@ -2,7 +2,6 @@
 package ca.sait.calculator.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Kayleen
+ * @author Kayleen Liu
  */
 @WebServlet(name = "ArithmeticCalculatorServlet", urlPatterns = {"/ArithmeticCalculatorServlet"})
 public class ArithmeticCalculatorServlet extends HttpServlet {
@@ -44,10 +43,8 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String firstString = request.getParameter("first");
-        String secondString = request.getParameter("second");
-            
-        try{
-            
+        String secondString = request.getParameter("second");          
+        try{       
             int first = Integer.parseInt(firstString);
             int second = Integer.parseInt(secondString);
             String operation = request.getParameter("operation");
@@ -62,20 +59,12 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
                 case "%": calresult = first % second;
                     break;
             }
-            request.setAttribute("message", calresult);
-            
-            
+            request.setAttribute("message", calresult);                  
         }catch (Exception ex){
-            request.setAttribute("message", "invalid");
-            
-        }
-        
+            request.setAttribute("message", "invalid");       
+        }  
         request.setAttribute("first", firstString);
-        request.setAttribute("second", secondString);
-        
+        request.setAttribute("second", secondString); 
         getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp").forward(request, response);
     }
-
-    
-
 }

@@ -2,7 +2,6 @@
 package ca.sait.calculator.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Kayleen
+ * @author Kayleen Liu
  */
 public class AgeCalculatorServlet extends HttpServlet {
 
@@ -58,11 +57,6 @@ public class AgeCalculatorServlet extends HttpServlet {
         }else {
             request.setAttribute("message", "You must give your current age.");
         }
-        
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
     }
-
-
-  
-
 }
